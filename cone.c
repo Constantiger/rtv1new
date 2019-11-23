@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:42:03 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/23 15:01:09 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/23 15:15:15 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ float	mm_cone(t_ray *ray, t_cone *cn, float t)
 
 void	con_norm(t_ray *ray, t_cone *cn, float t, t_vec *n)
 {
-	float	a;
 	t_vec	p;
 	t_vec	t1;
 	t_vec	t2;

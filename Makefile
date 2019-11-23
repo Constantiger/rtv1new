@@ -6,7 +6,7 @@
 #    By: aannara <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 10:40:08 by aannara           #+#    #+#              #
-#    Updated: 2019/11/23 12:27:50 by aannara          ###   ########.fr        #
+#    Updated: 2019/11/23 15:13:16 by aannara          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,4 +17,4 @@ MLX_FLAGS = -I minilibx -lmlx -framework OpenGL -framework AppKit
 NAME = RTv1
 
 all:
-	gcc -o $(NAME) $(SRC) $(MLX_FLAGS) -O3
+	gcc -o $(NAME) $(SRC) $(MLX_FLAGS) -Wall -Wextra -Werror -O3

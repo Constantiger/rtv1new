@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:22:30 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/23 15:04:49 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/23 15:15:19 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	color(t_ray *ray, t_vec *res)
 	*res = add(one, two);
 }
 
-void	point(t_ray *ray, t_sphere *s, float t, t_vec *p)
+void	point(t_ray *ray, float t, t_vec *p)
 {
 	point_at_parameter(ray, t, p);
 }
@@ -150,7 +150,6 @@ t_ray	init_ray(t_img *img, int i, int j)
 	float	u;
 	float	v;
 	t_ray	ray;
-	t_vec	col;
 	t_vec	ll_cor;
 
 	u = (float)(i) / (float)(img->size_x);
@@ -194,7 +193,7 @@ float	specular(t_res *r, t_img *img, t_vec *l)
 	return (dot(viewdir, reflectdir));
 }
 
-float	shade_coef(t_res *r, t_img *img, t_vec *l)
+float	shade_coef(t_res *r, t_vec *l)
 {
 	t_vec	l_vec;
 	float	dot_p;
@@ -212,7 +211,7 @@ int		shadel(t_res *r, t_img *img, t_vec *l)
 	float	spec;
 
 	c2 = (*img->ar[r->x].col_f)(img->ar[r->x].obj);
-	coef = shade_coef(r, img, l);
+	coef = shade_coef(r, l);
 	color = grad(BLACK, c2, img->amb);
 	if (!shadowl(&r->p, img, r->x, l))
 	{
