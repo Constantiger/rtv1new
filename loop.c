@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:44:30 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/23 13:57:21 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/23 15:48:38 by sdiego           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,7 @@ int		key_press(int key, void *param)
 
 	m = (t_mlx*)param;
 	if (key == 53)
-	{
-		mlx_destroy_window(m->mlx, m->window);
-		exit(0);
-	}
+		close_win(m);
 	else if (key == 123 || key == 124)
 		key_left_right(key, m);
 	else if (key == 126 || key == 125)
