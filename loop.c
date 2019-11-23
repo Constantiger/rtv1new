@@ -122,6 +122,8 @@ int		key_press(int key, void *param)
 		num_left_right(key, m);
 	else if (key == 89 || key == 92)
 		num_up_down(key, m);
+	else if (key == 17 || key == 3 || key == 5 || key == 4)
+		rotate_cam(key, m);
 	draw(m, m->i, 0, 0);
 	return (0);
 }
