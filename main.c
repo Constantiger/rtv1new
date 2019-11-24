@@ -79,7 +79,6 @@ void	set_camera(t_img *img)
 	set_vec(4.0, 0.0, 0.0, &img->hor);
 	set_vec(0.0, 2.0, 0.0, &img->ver);
 	set_vec(0.0, 0.0, 2.0, &img->ori);
-	set_vec(0.0, 0.0, 0.0, &img->cam_a);
 	set_sphere(setv(0.0, 0.0, -0.5), 0.5, &img->sp);
 	img->sp.color = c(255, 50, 50);
 	set_sphere(setv(2.0, -100.5, -0.5), 100.5, &img->sp2);
@@ -282,7 +281,6 @@ void	iter2(t_img *img, int i, int j)
 
 	clr = 0;
 	ray = init_ray(img, i, j);
-	rotate_v(&ray, img);
 	r_m = cycle(img, &ray);
 	x = 0;
 	if (r_m.t > 0.0)

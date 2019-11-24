@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c loop.c vec.c ray.c color.c sphere.c cylinder.c plane.c cone.c rotate_cam.c
+SRC = main.c loop.c vec.c ray.c color.c sphere.c cylinder.c plane.c cone.c
 
 MLX_FLAGS = -I minilibx -lmlx -framework OpenGL -framework AppKit
 

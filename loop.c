@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:44:30 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/23 15:48:38 by sdiego           ###   ########.fr       */
+/*   Updated: 2019/11/23 13:57:21 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,10 @@ int		key_press(int key, void *param)
 
 	m = (t_mlx*)param;
 	if (key == 53)
-		close_win(m);
+	{
+		mlx_destroy_window(m->mlx, m->window);
+		exit(0);
+	}
 	else if (key == 123 || key == 124)
 		key_left_right(key, m);
 	else if (key == 126 || key == 125)
@@ -119,8 +122,6 @@ int		key_press(int key, void *param)
 		num_left_right(key, m);
 	else if (key == 89 || key == 92)
 		num_up_down(key, m);
-	else if (key == 17 || key == 3 || key == 5 || key == 4)
-		rotate_cam(key, m);
 	draw(m, m->i, 0, 0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sdiego <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/23 15:05:53 by sdiego            #+#    #+#             */
-/*   Updated: 2019/11/23 15:08:28 by sdiego           ###   ########.fr       */
+/*   Updated: 2019/11/24 11:47:49 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	rotate_cam(int key, t_mlx *m)
 	}
 }
 
-void	rotate_z(float degree, float *xp, float *yp)
+void	rotate_z(float degree, float *xp, float *yp, float *zp)
 {
 	float	tempx;
 	float	tempy;
@@ -43,7 +43,7 @@ void	rotate_z(float degree, float *xp, float *yp)
 	*yp = tempx * sin(degree * PI_R) + tempy * cos(degree * PI_R);
 }
 
-void	rotate_x(float degree, float *yp, float *zp)
+void	rotate_x(float degree, float *xp, float *yp, float *zp)
 {
 	float	tempy;
 	float	tempz;
@@ -54,7 +54,7 @@ void	rotate_x(float degree, float *yp, float *zp)
 	*zp = tempy * sin(degree * PI_R) + tempz * cos(degree * PI_R);
 }
 
-void	rotate_y(float degree, float *xp, float *zp)
+void	rotate_y(float degree, float *xp, float *yp, float *zp)
 {
 	float	tempx;
 	float	tempz;
@@ -67,7 +67,7 @@ void	rotate_y(float degree, float *xp, float *zp)
 
 void	rotate_v(t_ray *ray, t_img *angles)
 {
-	rotate_x(angles->cam_a.e[0], &ray->b.e[1], &ray->b.e[2]);
-	rotate_y(angles->cam_a.e[1], &ray->b.e[0], &ray->b.e[2]);
-	rotate_z(angles->cam_a.e[2], &ray->b.e[0], &ray->b.e[1]);
+	rotate_x(angles->cam_a.e[0], &ray->B.e[0], &ray->B.e[1], &ray->B.e[2]);
+	rotate_y(angles->cam_a.e[1], &ray->B.e[0], &ray->B.e[1], &ray->B.e[2]);
+	rotate_z(angles->cam_a.e[2], &ray->B.e[0], &ray->B.e[1], &ray->B.e[2]);
 }

@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 09:40:01 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/23 15:11:10 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 15:24:46 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,45 +92,22 @@ t_res	hit_cylinder(void *v_cy, t_ray *ray)
 	t_vec		abc;
 	t_res		r;
 	t_res		r1;
-	t_res		r2;
 	t_vec		pr;
 
 	cy = (t_cylinder*)v_cy;
 	cyl_dis(cy, ray, &abc);
-	r1 = hit_plane(&cy->cap1, ray);
-	r2 = hit_plane(&cy->cap2, ray);
+	r = hit_plane(&cy->cap1, ray);
+	r1 = hit_plane(&cy->cap2, ray);
+	if ((r.t > 0.0 && r1.t > 0.0 && r.t < r1.t) || (r1.t < 0.0 && r.t > 0.0))
+		r1 = r;
 	if (abc.e[2] < 0.0)
-	{
-		if (r1.t < 0.0 && r2.t < 0.0)
-			r.t = -1.0;
-		else
-		{
-			if ((r1.t > 0.0 && r2.t < 0.0) ||
-					(r1.t > 0.0 && r2.t > 0.0 && r1.t < r2.t))
-				return (r1);
-			else if ((r2.t > 0.0 && r1.t < 0.0) ||
-					(r2.t > 0.0 && r1.t > 0.0 && r2.t > r1.t))
-				return (r2);
-		}
-	}
+		return (r1);
 	else
 		abc.e[2] = (-abc.e[1] - sqrt(abc.e[2])) / (2.0 * abc.e[0]);
 	point_at_parameter(ray, abc.e[2], &pr);
 	pr = cy_proj(cy, pr);
 	if (sq_l(sub(cy->center, pr)) + sq_l(sub(pr, cy->b)) > cy->h * cy->h)
-	{
-		if (r1.t < 0.0 && r2.t < 0.0)
-			r.t = -1.0;
-		else
-		{
-			if ((r1.t > 0.0 && r2.t < 0.0) ||
-					(r1.t > 0.0 && r2.t > 0.0 && r1.t < r2.t))
-				return (r1);
-			else if ((r2.t > 0.0 && r1.t < 0.0) ||
-					(r2.t > 0.0 && r1.t > 0.0 && r2.t > r1.t))
-				return (r2);
-		}
-	}
+		return (r1);
 	else
 		r.t = abc.e[2];
 	if (r.t > 0.0)

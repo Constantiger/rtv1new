@@ -25,11 +25,10 @@
 # include "plane.h"
 # include "result.h"
 
-# define WIN_L	1280
-# define WIN_H	640
-# define WHITE	16777215
-# define BLACK	0
-# define PI_R	3.14159265/180
+# define WIN_L 1280
+# define WIN_H 640
+# define WHITE 16777215
+# define BLACK 0
 
 typedef	struct	s_obj
 {
@@ -52,7 +51,6 @@ typedef struct	s_img
 	t_vec		hor;
 	t_vec		ver;
 	t_vec		ori;
-	t_vec		cam_a;
 	t_sphere	sp;
 	t_sphere	sp2;
 	t_plane		pl;
@@ -76,7 +74,5 @@ typedef struct	s_mlx
 int				key_press(int key, void *param);
 int				close_win(void *param);
 void			draw(t_mlx *m, t_img *img, int x, int y);
-void			rotate_v(t_ray *ray, t_img *angles);
-void			rotate_cam(int key, t_mlx *m);
 
 #endif
