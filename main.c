@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:22:30 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/24 17:24:05 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 18:06:03 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,25 +106,6 @@ void	set_camera(t_img *img)
 	img->sp.color = c(150, 0, 255);
 	set_shading(img);
 	push_scene(img);
-}
-
-void	fill(t_img *img, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < img->size_y)
-	{
-		while (j < img->size_x)
-		{
-			img_pixel_put(img, j, i, color);
-			j++;
-		}
-		i++;
-		j = 0;
-	}
 }
 
 int		vec_col(t_vec *v)
@@ -286,7 +267,7 @@ t_res	cycle(t_img *img, t_ray *ray)
 	return (r_m);
 }
 
-void	iter2(t_img *img, int i, int j)
+void	iter(t_img *img, int i, int j)
 {
 	t_ray	ray;
 	int		x;
@@ -320,12 +301,11 @@ void	draw(t_mlx *m, t_img *img, int x, int y)
 
 	i = 0;
 	j = 0;
-	fill(img, 0);
 	while (j < img->size_y)
 	{
 		while (i < img->size_x)
 		{
-			iter2(img, i, j);
+			iter(img, i, j);
 			i++;
 		}
 		i = 0;

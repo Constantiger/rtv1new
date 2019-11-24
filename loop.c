@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:44:30 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/24 17:07:45 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 18:04:24 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	key_up_down(int key, t_mlx *m)
 	}
 }
 
-void	key_i_k(int key, t_mlx *m)
+void	key_i_k_b(int key, t_mlx *m)
 {
 	if (key == 34)
 	{
@@ -48,9 +48,13 @@ void	key_i_k(int key, t_mlx *m)
 	{
 		m->i->lit[0].e[2] -= 1.0;
 	}
+	else if (key == 11)
+	{
+		m->i->specul_on = !m->i->specul_on;
+	}
 }
 
-void	key_j_l(int key, t_mlx *m)
+void	key_j_l_c_v(int key, t_mlx *m)
 {
 	if (key == 38)
 	{
@@ -59,6 +63,18 @@ void	key_j_l(int key, t_mlx *m)
 	else if (key == 37)
 	{
 		m->i->lit[0].e[0] -= 1.0;
+	}
+	else if (key == 8)
+	{
+		m->i->shade_on = !m->i->shade_on;
+		if (!m->i->shade_on)
+			m->i->amb = 1.0;
+		else
+			m->i->amb = 0.07;
+	}
+	else if (key == 9)
+	{
+		m->i->shadow_on = !m->i->shadow_on;
 	}
 }
 
@@ -109,10 +125,10 @@ int		key_press(int key, void *param)
 		key_left_right(key, m);
 	else if (key == 126 || key == 125)
 		key_up_down(key, m);
-	else if (key == 34 || key == 40)
-		key_i_k(key, m);
-	else if (key == 38 || key == 37)
-		key_j_l(key, m);
+	else if (key == 34 || key == 40 || key == 11)
+		key_i_k_b(key, m);
+	else if (key == 38 || key == 37 || key == 8 || key == 9)
+		key_j_l_c_v(key, m);
 	else if (key == 91 || key == 87)
 		num_plus(key, m);
 	else if (key == 86 || key == 88)
