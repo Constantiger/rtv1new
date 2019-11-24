@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:22:30 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/24 18:32:33 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 18:54:50 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,6 @@ void	set_camera(t_img *img)
 	img->sp.color = c(150, 0, 255);
 	set_shading(img);
 	push_scene(img);
-}
-
-int		vec_col(t_vec *v)
-{
-	return (c((int)(255.99 * z(v)),
-			(int)(255.99 * y(v)),
-			(int)(255.99 * z(v))));
 }
 
 void	color(t_ray *ray, t_vec *res)
