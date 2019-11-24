@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:22:30 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/24 18:54:50 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 18:56:28 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,6 @@ void	color(t_ray *ray, t_vec *res)
 	set_vec(0.5, 0.7, 1.0, &two);
 	mulfa(&two, t);
 	*res = add(one, two);
-}
-
-void	point(t_ray *ray, float t, t_vec *p)
-{
-	point_at_parameter(ray, t, p);
 }
 
 t_ray	init_ray(t_img *img, int i, int j)
