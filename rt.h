@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:21:12 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/24 17:16:27 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 18:33:04 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct	s_img
 	int			shade_on;
 	int			shadow_on;
 	int			specul_on;
+	int			redraw;
 }				t_img;
 
 typedef struct	s_mlx
@@ -76,6 +77,7 @@ typedef struct	s_mlx
 	t_img		*i;
 }				t_mlx;
 
+int				expose(void *param);
 int				key_press(int key, void *param);
 int				close_win(void *param);
 void			draw(t_mlx *m, t_img *img, int x, int y);

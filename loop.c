@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:44:30 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/24 18:04:24 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 18:35:11 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,16 @@ int		key_press(int key, void *param)
 		num_up_down(key, m);
 	else if (key == 17 || key == 5 || key == 3 || key == 4)
 		rotate_cam(key, m);
+	m->i->redraw = 1;
+	draw(m, m->i, 0, 0);
+	return (0);
+}
+
+int		expose(void *param)
+{
+	t_mlx	*m;
+
+	m = (t_mlx*)param;
 	draw(m, m->i, 0, 0);
 	return (0);
 }

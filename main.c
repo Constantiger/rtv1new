@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:22:30 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/24 18:06:03 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 18:32:33 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,15 +301,19 @@ void	draw(t_mlx *m, t_img *img, int x, int y)
 
 	i = 0;
 	j = 0;
-	while (j < img->size_y)
+	if (img->redraw)
 	{
-		while (i < img->size_x)
+		while (j < img->size_y)
 		{
-			iter(img, i, j);
-			i++;
+			while (i < img->size_x)
+			{
+				iter(img, i, j);
+				i++;
+			}
+			i = 0;
+			j++;
 		}
-		i = 0;
-		j++;
+		img->redraw = 0;
 	}
 	mlx_put_image_to_window(m->mlx, m->window, img->img, x, y);
 }
@@ -324,7 +328,9 @@ int		main(void)
 	new_image(&m, &img, WIN_L, WIN_H);
 	set_camera(&img);
 	m.i = &img;
+	img.redraw = 1;
 	draw(&m, &img, 0, 0);
+	mlx_expose_hook(m.window, &expose, (void*)(&m));
 	mlx_hook(m.window, 2, 0, &key_press, (void*)(&m));
 	mlx_hook(m.window, 17, 0, &close_win, (void*)(&m));
 	mlx_loop(m.mlx);
