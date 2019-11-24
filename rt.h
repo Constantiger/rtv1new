@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:21:12 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/23 15:06:58 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 15:46:22 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define WIN_H 640
 # define WHITE 16777215
 # define BLACK 0
+# define PI_R 0.0174532925
 
 typedef	struct	s_obj
 {
@@ -62,6 +63,7 @@ typedef struct	s_img
 	float		amb;
 	t_obj		ar[100];
 	int			obj_count;
+	t_vec		cam_a;
 }				t_img;
 
 typedef struct	s_mlx
@@ -74,5 +76,7 @@ typedef struct	s_mlx
 int				key_press(int key, void *param);
 int				close_win(void *param);
 void			draw(t_mlx *m, t_img *img, int x, int y);
+void			rotate_cam(int key, t_mlx *m);
+void			rotate_v(t_ray *ray, t_img *angles);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:22:30 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/23 15:15:19 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 15:44:53 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	set_camera(t_img *img)
 	set_plane(setv(0.0, -1.0, 0.0), setv(0.0, 1.0, 0.0), &img->pl);
 	set_plane(setv(0.0, 0.0, -5.0), setv(0.0, 0.0, 1.0), &img->pl2);
 	set_cone(setv(-1.0, 1.0, -0.5), setv(-1.0, -0.3, -0.5), 1.0, &img->cn);
-	set_cylinder(setv(1.0, -0.8, -0.5), setv(0.9, 0.7, -0.5), 0.5, &img->cy);
+	set_cylinder(setv(1.5, -0.4, -0.5), setv(0.9, 0.5, -0.5), 0.5, &img->cy);
 	img->amb = 0.07;
 	img->obj_count = 0;
 	img->cn.color = c(255, 0, 0);
@@ -281,6 +281,7 @@ void	iter2(t_img *img, int i, int j)
 
 	clr = 0;
 	ray = init_ray(img, i, j);
+	rotate_v(&ray, img);
 	r_m = cycle(img, &ray);
 	x = 0;
 	if (r_m.t > 0.0)
