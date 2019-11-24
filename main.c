@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:22:30 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/24 15:44:53 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 17:24:05 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,17 @@ void	push_scene(t_img *img)
 	push_obj_ar((void*)(&img->pl2), &hit_plane, &plane_col, img);
 }
 
+void	set_shading(t_img *img)
+{
+	img->shade_on = 1;
+	img->shadow_on = 1;
+	img->specul_on = 1;
+	if (!img->shade_on)
+		img->amb = 1.0;
+	else
+		img->amb = 0.07;
+}
+
 void	set_camera(t_img *img)
 {
 	set_vec(-2.0, -1.0, -1.0, &img->ll_cor);
@@ -87,13 +98,13 @@ void	set_camera(t_img *img)
 	set_plane(setv(0.0, 0.0, -5.0), setv(0.0, 0.0, 1.0), &img->pl2);
 	set_cone(setv(-1.0, 1.0, -0.5), setv(-1.0, -0.3, -0.5), 1.0, &img->cn);
 	set_cylinder(setv(1.5, -0.4, -0.5), setv(0.9, 0.5, -0.5), 0.5, &img->cy);
-	img->amb = 0.07;
 	img->obj_count = 0;
 	img->cn.color = c(255, 0, 0);
 	img->pl.color = c(0, 0, 255);
 	img->pl2.color = c(0, 128, 128);
 	img->cy.color = c(255, 0, 255);
 	img->sp.color = c(150, 0, 255);
+	set_shading(img);
 	push_scene(img);
 }
 
@@ -167,6 +178,8 @@ int		shadowl(t_vec *p, t_img *img, int x, t_vec *l)
 
 	i = 0;
 	set_ray(p, l, &ray);
+	if (!img->shadow_on)
+		return (0);
 	while (i < img->obj_count)
 	{
 		if (i == x)
@@ -186,6 +199,8 @@ float	specular(t_res *r, t_img *img, t_vec *l)
 	t_vec	viewdir;
 	t_vec	reflectdir;
 
+	if (!img->specul_on)
+		return (0.0);
 	viewdir = sub(img->ori, r->p);
 	make_unit_vector(&viewdir);
 	reflectdir = reflect(sub(r->p, *l), r->n);
@@ -213,7 +228,7 @@ int		shadel(t_res *r, t_img *img, t_vec *l)
 	c2 = (*img->ar[r->x].col_f)(img->ar[r->x].obj);
 	coef = shade_coef(r, l);
 	color = grad(BLACK, c2, img->amb);
-	if (!shadowl(&r->p, img, r->x, l))
+	if (!shadowl(&r->p, img, r->x, l) && img->shade_on)
 	{
 		if (coef < 0.0)
 			return (color);

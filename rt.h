@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:21:12 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/24 15:46:22 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/24 17:16:27 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ typedef struct	s_img
 	t_obj		ar[100];
 	int			obj_count;
 	t_vec		cam_a;
+	int			shade_on;
+	int			shadow_on;
+	int			specul_on;
 }				t_img;
 
 typedef struct	s_mlx
