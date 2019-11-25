@@ -16,6 +16,8 @@
 # include <mlx.h>
 # include <math.h>
 # include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
 # include "vec.h"
 # include "ray.h"
 # include "color.h"
@@ -79,6 +81,17 @@ typedef struct	s_mlx
 	void		*mlx;
 	void		*window;
 	t_img		*i;
+	int			red;
+	int			green;
+	int			blue;
+	t_vec		p;
+	t_vec		a;
+	t_vec		b;
+	float		r;
+	int			color;
+	double		integer;
+	double		fraction;
+	int			infraction;
 }				t_mlx;
 
 float			pwr(float f, int p);
@@ -108,5 +121,22 @@ void			push_sphere(t_vec c, float r, int color, t_img *img);
 void			push_pl(t_vec c, t_vec n, int color, t_img *img);
 void			push_cn(t_vec t, t_vec b, float ang, int color, t_img *img);
 void			push_cy(t_vec t, t_vec b, float r, int color, t_img *img);
+void			read_file(int fd, t_mlx *m);
+int				ft_atoi(const char *str);
+double			ft_atof(char *num);
+t_mlx			init_atof(t_mlx *m);
+void			print_err(char *s);
+int				sp(char *str, int *i);
+int				cn(char *str, int *i);
+int				cy(char *str, int *i);
+int				pl(char *str, int *i);
+int				pl2(char *str, int *i);
+int				light(char *str, int *i);
+void			push_lit(t_vec l, t_img *img);
+void			plane(char *str, t_mlx *m, int i);
+void			cylinder(char *str, t_mlx *m, int i);
+void			cone(char *str, t_mlx *m, int i);
+void			sphere(char *str, t_mlx *m, int i);
+void			li(char *str, t_mlx *m, int i);
 
 #endif

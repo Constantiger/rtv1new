@@ -27,16 +27,30 @@ float	pwr(float f, int p)
 	return (res);
 }
 
-int		main(void)
+int		main(int argc, char **argv)
 {
 	t_mlx	m;
 	t_img	img;
+	int		fd;
 
 	m.mlx = mlx_init();
 	m.window = mlx_new_window(m.mlx, WIN_L, WIN_H, "Ray Traycer");
 	new_image(&m, &img, WIN_L, WIN_H);
-	set_camera(&img);
 	m.i = &img;
+	//set_camera(&img);
+	//img.redraw = 1;
+	if (argc == 2)
+	{
+		img.sp_count = 0;
+		img.pl_count = 0;
+		img.cn_count = 0;
+		img.cy_count = 0;
+		img.lit_count = 0;
+		img.obj_count = 0;
+		fd = open(argv[1], O_RDONLY);
+		read_file(fd, &m);
+	}
+	set_camera(&img);
 	img.redraw = 1;
 	draw(&m, &img, 0, 0);
 	mlx_expose_hook(m.window, &expose, (void*)(&m));

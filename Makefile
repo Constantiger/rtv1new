@@ -14,7 +14,8 @@ SRC = ./src/main.c ./src/loop.c ./src/vec.c ./src/ray.c ./src/color.c \
 	./src/sphere.c ./src/cylinder.c ./src/plane.c ./src/cone.c \
 	./src/rotate_cam.c ./src/keys.c ./src/cone_norm.c ./src/cylinder_norm.c \
 	./src/sphere_norm.c ./src/set.c ./src/vec_math.c ./src/draw.c \
-	./src/render.c ./src/push.c
+	./src/render.c ./src/push.c ./src/figure.c ./src/figure_helper.c \
+	./src/print_err.c ./src/read.c ./src/read_helper.c
 
 OBJ = $(SRC:.c=.o)
 
