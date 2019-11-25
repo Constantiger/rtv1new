@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 14:11:39 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/23 13:48:01 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/25 13:52:37 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_res	hit_plane(void *v_pl, t_ray *ray)
 	t_plane *pl;
 
 	pl = (t_plane*)v_pl;
-	originr(ray, &o);
+	o = origin(ray);
 	denom = dot(direction(ray), pl->norm);
 	if (denom > 0.0001 || denom < -0.0001)
 	{

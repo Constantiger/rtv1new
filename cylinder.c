@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 09:40:01 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/24 15:24:46 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/25 13:47:14 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,49 +26,10 @@ void	set_cylinder(t_vec cent, t_vec b, float r, t_cylinder *c)
 	c->cap2.r = r;
 }
 
-t_vec	cyl_proj(t_cylinder *cy, t_vec inter)
-{
-	t_vec	res;
-	t_vec	t;
-	float	a;
-
-	a = dot(cy->v, sub(inter, cy->center)) / dot(cy->v, cy->v);
-	t = mulf(cy->v, a);
-	res = add(cy->center, t);
-	return (res);
-}
-
-t_vec	cy_proj(t_cylinder *cy, t_vec inter)
-{
-	t_vec	res;
-	t_vec	t;
-
-	t = mulf(cy->v, dot(cy->v, sub(inter, cy->center)) / dot(cy->v, cy->v));
-	res = add(cy->center, t);
-	return (res);
-}
-
 float	mm(t_ray *ray, t_cylinder *cy, float t)
 {
 	return (dot(direction(ray), cy->v) * t +
 			dot(sub(origin(ray), cy->center), cy->v));
-}
-
-void	cyl_norm(t_ray *ray, t_cylinder *cy, float t, t_vec *n)
-{
-	t_vec	p;
-	t_vec	pr;
-
-	point_at_parameter(ray, t, &p);
-	pr = cyl_proj(cy, p);
-	*n = sub(p, pr);
-	make_unit_vector(n);
-}
-
-void	cylinder_p_n(t_ray *ray, t_cylinder *cy, t_res *r)
-{
-	point_at_parameter(ray, r->t, &r->p);
-	cyl_norm(ray, cy, r->t, &r->n);
 }
 
 void	cyl_dis(t_cylinder *cy, t_ray *ray, t_vec *abc)

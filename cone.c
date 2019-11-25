@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:42:03 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/23 15:15:15 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/25 13:40:44 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,37 +29,6 @@ float	mm_cone(t_ray *ray, t_cone *cn, float t)
 {
 	return (dot(direction(ray), cn->v) * t +
 			dot(sub(origin(ray), cn->center), cn->v));
-}
-
-void	con_norm(t_ray *ray, t_cone *cn, float t, t_vec *n)
-{
-	t_vec	p;
-	t_vec	t1;
-	t_vec	t2;
-	float	m;
-
-	point_at_parameter(ray, t, &p);
-	m = mm_cone(ray, cn, t);
-	t1 = sub(p, cn->center);
-	t2 = mulf(cn->v, m);
-	*n = sub(t1, mulf(t2, (1 + cn->k * cn->k)));
-	make_unit_vector(n);
-}
-
-t_vec	cn_proj(t_cone *cn, t_vec inter)
-{
-	t_vec	res;
-	t_vec	t;
-
-	t = mulf(cn->v, dot(cn->v, sub(inter, cn->center)) / dot(cn->v, cn->v));
-	res = add(cn->center, t);
-	return (res);
-}
-
-void	cone_p_n(t_ray *ray, t_cone *cn, t_res *r)
-{
-	point_at_parameter(ray, r->t, &r->p);
-	con_norm(ray, cn, r->t, &r->n);
 }
 
 void	cone_dis(t_cone *cn, t_ray *ray, t_vec *abc)

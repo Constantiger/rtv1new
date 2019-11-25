@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 09:35:09 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/23 15:04:18 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/25 13:45:26 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ void			cyl_norm(t_ray *ray, t_cylinder *cy, float t, t_vec *n);
 void			set_cylinder(t_vec cent, t_vec b, float r, t_cylinder *c);
 t_res			hit_cylinder(void *v_cy, t_ray *ray);
 int				cyl_col(void *v_cy);
+t_vec			cy_proj(t_cylinder *cy, t_vec inter);
+void			cylinder_p_n(t_ray *ray, t_cylinder *cy, t_res *r);
 
 #endif

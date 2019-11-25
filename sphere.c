@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 14:27:57 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/23 13:49:01 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/25 14:01:46 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,8 @@
 
 void	set_sphere(t_vec pos, float r, t_sphere *s)
 {
-	set_vec(pos.e[0], pos.e[1], pos.e[2], &s->center);
+	s->center = pos;
 	s->radius = r;
-}
-
-void	sphere_norm(t_ray *ray, t_sphere *s, float t, t_vec *res)
-{
-	point_at_parameter(ray, t, res);
-	suba(res, &s->center);
-	make_unit_vector(res);
-}
-
-void	sphere_p_n(t_ray *ray, t_sphere *s, t_res *r)
-{
-	point_at_parameter(ray, r->t, &r->p);
-	sphere_norm(ray, s, r->t, &r->n);
 }
 
 void	sphere_dis(t_sphere *s, t_ray *ray, t_vec *abc)
