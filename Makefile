@@ -6,17 +6,44 @@
 #    By: aannara <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 10:40:08 by aannara           #+#    #+#              #
-#    Updated: 2019/11/25 14:51:28 by aannara          ###   ########.fr        #
+#    Updated: 2019/11/25 17:52:13 by aannara          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c loop.c vec.c ray.c color.c sphere.c cylinder.c plane.c cone.c \
-	rotate_cam.c keys.c cone_norm.c cylinder_norm.c sphere_norm.c set.c \
-	vec_math.c draw.c render.c
+SRC = ./src/main.c ./src/loop.c ./src/vec.c ./src/ray.c ./src/color.c \
+	./src/sphere.c ./src/cylinder.c ./src/plane.c ./src/cone.c \
+	./src/rotate_cam.c ./src/keys.c ./src/cone_norm.c ./src/cylinder_norm.c \
+	./src/sphere_norm.c ./src/set.c ./src/vec_math.c ./src/draw.c \
+	./src/render.c ./src/push.c
+
+OBJ = $(SRC:.c=.o)
+
+FLAGS = -Wall -Werror -Wextra -O3
 
 MLX_FLAGS = -I minilibx -lmlx -framework OpenGL -framework AppKit
 
+INC = ./inc
+
+MLX = ./mlx/libmlx.a
+
 NAME = RTv1
 
-all:
-	gcc -o $(NAME) $(SRC) $(MLX_FLAGS) -Wall -Wextra -Werror -O3
+all: $(NAME)
+
+$(NAME): $(OBJ) $(MLX) $(HEADERS)
+	gcc $(FLAGS) $(MLX_FLAGS) -o $(NAME) $(OBJ) $(MLX)
+
+.c.o: $(HEADERS)
+	gcc -I$(INC) $(FLAGS) -c $< -o $@
+
+$(MLX):
+	make -C ./mlx/
+
+clean:
+	/bin/rm -f $(OBJ)
+
+fclean: clean
+	make clean -C ./mlx/
+	/bin/rm -f $(NAME)
+
+re: fclean all
