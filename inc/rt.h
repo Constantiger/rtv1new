@@ -74,6 +74,7 @@ typedef struct	s_img
 	int			specul_on;
 	int			mult_lit_on;
 	int			redraw;
+	int			help;
 }				t_img;
 
 typedef struct	s_mlx
@@ -138,6 +139,7 @@ void			cylinder(char *str, t_mlx *m, int i);
 void			cone(char *str, t_mlx *m, int i);
 void			sphere(char *str, t_mlx *m, int i);
 void			li(char *str, t_mlx *m, int i);
-void			set_figure(t_img *img);
+void			set_figure(t_mlx *m);
+void			menu(t_mlx *m);
 
 #endif

@@ -52,7 +52,7 @@ int		key_press(int key, void *param)
 		key_i_k_j_l(key, m);
 	else if (key == 6 || key == 7 || key == 8 || key == 9)
 		key_z_x_c_v(key, m);
-	else if (key == 91 || key == 87)
+	else if (key == 91 || key == 87 || key == 4)
 		num_plus(key, m);
 	else if (key == 86 || key == 88)
 		num_left_right(key, m);

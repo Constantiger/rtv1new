@@ -33,13 +33,15 @@ int		main(int argc, char **argv)
 	t_img	img;
 	int		fd;
 
+	if (argc != 2)
+		print_err("./RTv1 <scene>");
 	m.mlx = mlx_init();
 	m.window = mlx_new_window(m.mlx, WIN_L, WIN_H, "Ray Traycer");
 	new_image(&m, &img, WIN_L, WIN_H);
 	m.i = &img;
 	if (argc == 2)
 	{
-		set_figure(&img);
+		set_figure(&m);
 		fd = open(argv[1], O_RDONLY);
 		read_file(fd, &m);
 	}

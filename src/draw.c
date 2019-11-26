@@ -98,4 +98,5 @@ void	draw(t_mlx *m, t_img *img, int x, int y)
 		img->redraw = 0;
 	}
 	mlx_put_image_to_window(m->mlx, m->window, img->img, x, y);
+	menu(m);
 }

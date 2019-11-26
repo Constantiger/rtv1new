@@ -90,4 +90,8 @@ void	num_plus(int key, t_mlx *m)
 	{
 		m->i->ori.e[2] += 0.5;
 	}
+	else if (key == 4)
+	{
+		m->i->help = !m->i->help;
+	}
 }

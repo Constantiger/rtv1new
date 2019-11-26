@@ -41,14 +41,21 @@ void	cam(char *str, t_mlx *m, int i)
 	}
 }
 
-void	set_figure(t_img *img)
+void	set_figure(t_mlx *m)
 {
-	img->sp_count = 0;
-	img->pl_count = 0;
-	img->cn_count = 0;
-	img->cy_count = 0;
-	img->lit_count = 0;
-	img->obj_count = 0;
+	m->i->sp_count = 0;
+	m->i->pl_count = 0;
+	m->i->cn_count = 0;
+	m->i->cy_count = 0;
+	m->i->lit_count = 0;
+	m->i->obj_count = 0;
+	m->i->help = 0;
+	m->red = 255;
+	m->green = 255;
+	m->blue = 255;
+	m->i->ori = setv(0.0, 0.0, 2.0);
+	m->i->cam_a = setv(0.0, 0.0, 0.0);
+	m->color = c(255, 255, 255);
 }
 
 void	read_file_next(char *str, t_mlx *m, int i)
