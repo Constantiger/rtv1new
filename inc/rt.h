@@ -138,5 +138,6 @@ void			cylinder(char *str, t_mlx *m, int i);
 void			cone(char *str, t_mlx *m, int i);
 void			sphere(char *str, t_mlx *m, int i);
 void			li(char *str, t_mlx *m, int i);
+void			set_figure(t_img *img);
 
 #endif

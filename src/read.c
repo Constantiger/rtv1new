@@ -13,6 +13,16 @@
 #include "rt.h"
 #include <stdio.h>
 
+void	set_figure(t_img *img)
+{
+	img->sp_count = 0;
+	img->pl_count = 0;
+	img->cn_count = 0;
+	img->cy_count = 0;
+	img->lit_count = 0;
+	img->obj_count = 0;
+}
+
 void	read_file_next(char *str, t_mlx *m, int i)
 {
 	while (str[i] != '\0')
