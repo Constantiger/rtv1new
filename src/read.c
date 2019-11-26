@@ -11,7 +11,35 @@
 /* ************************************************************************** */
 
 #include "rt.h"
-#include <stdio.h>
+
+int		camera(char *str, int *i)
+{
+	if (str[*i] == 'e' && str[++(*i)] == 'y' && str[++(*i)] == 'e' &&
+	str[++(*i)] == '\n' && str[++(*i)] == '{' && str[++(*i)] == '\n')
+		return (1);
+	else
+		return (0);
+}
+
+void	cam(char *str, t_mlx *m, int i)
+{
+	while (str[i] != '}')
+	{
+		if (str[i] == 'x' && str[++i] == '=')
+			m->i->ori.e[0] = ft_atof(&str[++i]);
+		if (str[i] == 'y' && str[++i] == '=')
+			m->i->ori.e[1] = ft_atof(&str[++i]);
+		if (str[i] == 'z' && str[++i] == '=')
+			m->i->ori.e[2] = ft_atof(&str[++i]);
+		if (str[i] == 'X' && str[++i] == '=')
+			m->i->cam_a.e[0] = ft_atof(&str[++i]);
+		if (str[i] == 'Y' && str[++i] == '=')
+			m->i->cam_a.e[1] = ft_atof(&str[++i]);
+		if (str[i] == 'Z' && str[++i] == '=')
+			m->i->cam_a.e[2] = ft_atof(&str[++i]);
+		i++;
+	}
+}
 
 void	set_figure(t_img *img)
 {
@@ -43,6 +71,8 @@ void	read_file_next(char *str, t_mlx *m, int i)
 			plane(str, m, i);
 		if (light(str, &i))
 			li(str, m, i);
+		if (camera(str, &i))
+			cam(str, m, i);
 		i++;
 	}
 	free(str);

@@ -110,8 +110,8 @@ void	set_camera(t_img *img)
 	img->ll_cor = setv(-2.0, -1.0, -1.0);
 	img->hor = setv(4.0, 0.0, 0.0);
 	img->ver = setv(0.0, 2.0, 0.0);
-	img->ori = setv(0.0, 0.0, 2.0);
-	img->cam_a = setv(0.0, 0.0, 0.0);
+	//img->ori = setv(0.0, 0.0, 2.0);
+	//img->cam_a = setv(0.0, 0.0, 0.0);
 	/*push_sphere(setv(0.0, 0.0, -0.5), 0.5, c(150, 0, 255), img);
 	push_sphere(setv(1.0, 0.0, -0.5), 0.6, c(255, 255, 255), img);
 	push_pl(setv(0.0, -1.0, 0.0), setv(0.0, 1.0, 0.0), c(0, 0, 255), img);

@@ -17,9 +17,12 @@ int		shadowl(t_vec *p, t_img *img, int x, t_vec *l)
 	int		i;
 	t_ray	ray;
 	t_res	r;
+	t_vec	d;
+
 
 	i = 0;
-	set_ray(p, l, &ray);
+	d = sub(*l, *p);
+	set_ray(p, &d, &ray);
 	if (!img->shadow_on)
 		return (0);
 	while (i < img->obj_count)
@@ -29,7 +32,7 @@ int		shadowl(t_vec *p, t_img *img, int x, t_vec *l)
 		if (i >= img->obj_count)
 			break ;
 		r = (*img->ar[i].hit_f)(img->ar[i].obj, &ray);
-		if (r.t > 0.0)
+		if (r.t > 0.0 && r.t < 1.0)
 			return (1);
 		i++;
 	}
