@@ -40,11 +40,11 @@ void	key_i_k_j_l(int key, t_mlx *m)
 {
 	if (key == 34)
 	{
-		m->i->lit[0].e[2] += 1.0;
+		m->i->lit[0].e[1] += 1.0;
 	}
 	else if (key == 40)
 	{
-		m->i->lit[0].e[2] -= 1.0;
+		m->i->lit[0].e[1] -= 1.0;
 	}
 	else if (key == 38)
 	{

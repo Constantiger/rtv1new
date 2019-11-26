@@ -62,7 +62,7 @@ void	read_file(int fd, t_mlx *m)
 		print_err("Error read file");
 	if (bytes == 1)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * 600)))
+		if (!(str = (char *)malloc(sizeof(char) * 1200)))
 			return ;
 		while (bytes != '\0')
 		{
