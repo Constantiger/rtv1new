@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 14:42:44 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/25 14:48:26 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/27 11:50:06 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int		shadowl(t_vec *p, t_img *img, int x, t_vec *l)
 	t_ray	ray;
 	t_res	r;
 	t_vec	d;
-
 
 	i = 0;
 	d = sub(*l, *p);

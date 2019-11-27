@@ -6,7 +6,7 @@
 /*   By: sdiego <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/24 12:25:54 by sdiego            #+#    #+#             */
-/*   Updated: 2019/11/24 12:25:55 by sdiego           ###   ########.fr       */
+/*   Updated: 2019/11/27 11:57:48 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,14 @@ void	read_file_next(char *str, t_mlx *m, int i)
 		if (cn(str, &i))
 		{
 			cone(str, m, i);
-			push_cn(m->a, m->b, m->r, m->color, m->i);
+			push_cn_color(m->i, m->color);
+			push_cn(m->a, m->b, m->r, m->i);
 		}
 		if (cy(str, &i))
 		{
 			cylinder(str, m, i);
-			push_cy(m->a, m->b, m->r, m->color, m->i);
+			push_cy_color(m->i, m->color);
+			push_cy(m->a, m->b, m->r, m->i);
 		}
 		if (pl(str, &i))
 			plane(str, m, i);

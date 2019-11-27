@@ -6,7 +6,7 @@
 /*   By: aannara <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:21:12 by aannara           #+#    #+#             */
-/*   Updated: 2019/11/25 17:51:50 by aannara          ###   ########.fr       */
+/*   Updated: 2019/11/27 11:59:37 by aannara          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,8 @@ void			rotate_cam(int key, t_mlx *m);
 void			rotate_v(t_ray *ray, t_img *angles);
 void			push_sphere(t_vec c, float r, int color, t_img *img);
 void			push_pl(t_vec c, t_vec n, int color, t_img *img);
-void			push_cn(t_vec t, t_vec b, float ang, int color, t_img *img);
-void			push_cy(t_vec t, t_vec b, float r, int color, t_img *img);
+void			push_cn(t_vec t, t_vec b, float ang, t_img *img);
+void			push_cy(t_vec t, t_vec b, float r, t_img *img);
 void			read_file(int fd, t_mlx *m);
 int				ft_atoi(const char *str);
 double			ft_atof(char *num);
@@ -141,5 +141,7 @@ void			sphere(char *str, t_mlx *m, int i);
 void			li(char *str, t_mlx *m, int i);
 void			set_figure(t_mlx *m);
 void			menu(t_mlx *m);
+void			push_cn_color(t_img *img, int color);
+void			push_cy_color(t_img *img, int color);
 
 #endif
