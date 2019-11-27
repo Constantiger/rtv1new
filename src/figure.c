@@ -23,7 +23,7 @@ void	plane(char *str, t_mlx *m, int i)
 		else if (str[i] == 'z' && str[++i] == '=')
 			m->a.e[2] = ft_atof(&str[++i]);
 		else if (str[i] == 'X' && str[++i] == '=')
-			m->i->pl[0].norm.e[0] = ft_atof(&str[++i]);
+			m->b.e[0] = ft_atof(&str[++i]);
 		else if (str[i] == 'Y' && str[++i] == '=')
 			m->b.e[1] = ft_atof(&str[++i]);
 		else if (str[i] == 'Z' && str[++i] == '=')
