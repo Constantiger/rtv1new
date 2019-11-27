@@ -48,7 +48,7 @@ int		key_press(int key, void *param)
 		key_left_right(key, m);
 	else if (key == 126 || key == 125)
 		key_up_down(key, m);
-	else if (key == 34 || key == 40 || key == 38 || key == 37)
+	else if (key == 34 || key == 40 || key == 38 || key == 37 || key == 11)
 		key_i_k_j_l(key, m);
 	else if (key == 6 || key == 7 || key == 8 || key == 9)
 		key_z_x_c_v(key, m);

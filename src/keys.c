@@ -39,20 +39,25 @@ void	key_up_down(int key, t_mlx *m)
 void	key_i_k_j_l(int key, t_mlx *m)
 {
 	if (key == 34)
-	{
 		m->i->lit[0].e[1] += 1.0;
-	}
 	else if (key == 40)
-	{
 		m->i->lit[0].e[1] -= 1.0;
-	}
 	else if (key == 38)
 	{
-		m->i->lit[0].e[0] += 1.0;
+		m->i->powl -= 0.1;
+		if (m->i->powl < 0.0)
+			m->i->powl = 0.0;
 	}
 	else if (key == 37)
 	{
-		m->i->lit[0].e[0] -= 1.0;
+		m->i->powl += 0.1;
+		if (m->i->powl > 1.0)
+			m->i->powl = 1.0;
+	}
+	else if (key == 11)
+	{
+		m->i->pows++;
+		m->i->pows %= 12;
 	}
 }
 

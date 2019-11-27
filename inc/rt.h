@@ -66,6 +66,8 @@ typedef struct	s_img
 	int			lit_count;
 	int			lit_save;
 	float		amb;
+	float		powl;
+	int			pows;
 	t_obj		ar[100];
 	int			obj_count;
 	t_vec		cam_a;

@@ -51,6 +51,8 @@ void	push_scene(t_img *img)
 void	set_shading(t_img *img)
 {
 	img->shade_on = 1;
+	img->powl = 1.0;
+	img->pows = 10;
 	img->shadow_on = 1;
 	img->specul_on = 1;
 	img->mult_lit_on = 1;

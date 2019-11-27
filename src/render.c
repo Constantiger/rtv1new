@@ -79,11 +79,12 @@ int		shadel(t_res *r, t_img *img, t_vec *l)
 		if (coef > 1.0)
 			coef = 1.0;
 		coef = coef / img->lit_count;
+		coef *= img->powl;
 		color = grad(color, c2, coef);
 		spec = specular(r, img, l);
 		if (spec > 0.0)
 		{
-			spec = pwr(spec, 10);
+			spec = pwr(spec, img->pows) * img->powl;
 			color = grad(color, WHITE, spec);
 		}
 	}
