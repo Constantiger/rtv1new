@@ -56,6 +56,7 @@ void	set_figure(t_mlx *m)
 	m->i->ori = setv(0.0, 0.0, 2.0);
 	m->i->cam_a = setv(0.0, 0.0, 0.0);
 	m->color = c(255, 255, 255);
+	m->size = 1500;
 }
 
 void	read_file_next(char *str, t_mlx *m, int i)
@@ -101,10 +102,12 @@ void	read_file(int fd, t_mlx *m)
 		print_err("Error read file");
 	if (bytes == 1)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * 1200)))
-			return ;
+		if (!(str = (char *)malloc(sizeof(char) * m->size)))
+			print_err("Malloc error");
 		while (bytes != '\0')
 		{
+			if (i >= m->size)
+				print_err("Out of memory");
 			str[i++] = c;
 			bytes = read(fd, &c, 1);
 		}

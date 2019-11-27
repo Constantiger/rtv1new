@@ -93,6 +93,7 @@ typedef struct	s_mlx
 	double		integer;
 	double		fraction;
 	int			infraction;
+	int			size;
 }				t_mlx;
 
 float			pwr(float f, int p);
